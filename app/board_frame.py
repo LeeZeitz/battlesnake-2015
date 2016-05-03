@@ -1,11 +1,12 @@
 class BoardFrame:
 
-	def __init__(self, data, height, width):
+	def __init__(self, data, height, width, name):
 		self.turn = data["turn"]
 		self.height = height
 		self.width = width
 		self.snakes = data["snakes"]
 		self.foods = data["food"]
+		self.name = name
 
 		self.ourSnake = self.findOurSnake(self.snakes)
 		self.ourLoc = self.ourSnake["coords"][0]
@@ -13,7 +14,7 @@ class BoardFrame:
 
 	def findOurSnake(self, snakes):
 		for snake in snakes:
-			if snake["name"] == "crazySnake":
+			if snake["name"] == self.name:
 				return snake
 	
 	def makeGrid(self):

@@ -7,6 +7,7 @@ from snake_util import *
 
 height = 0
 width = 0
+name = 'crazysnake5'
 
 @bottle.route("/static/<path:path>")
 def static(path):
@@ -34,7 +35,7 @@ def start():
         bottle.request.urlparts.scheme,
         bottle.request.urlparts.netloc
     )
-
+    global name
     global height
     height = data["height"]
     global width
@@ -42,7 +43,7 @@ def start():
 
     return {
         "taunt": "ohno",
-        "name": "crazysnake5",
+        "name": name,
         "color": "#689d22",
         "head_url": head_url
     }
@@ -54,7 +55,8 @@ def move():
     data = bottle.request.json
     global height
     global width
-    board = BoardFrame(data, height, width)
+    global name
+    board = BoardFrame(data, height, width, name)
     
     if board.foods:
         dest = closestFood(board)
