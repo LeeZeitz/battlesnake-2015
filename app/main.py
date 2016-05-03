@@ -41,9 +41,6 @@ def start():
     width = data["width"]
 
     return {
-        "name": "crazySnake2",
-        "color": "#689D22",
-        "head_url": head_url,
         "taunt": "ohno"
     }
 

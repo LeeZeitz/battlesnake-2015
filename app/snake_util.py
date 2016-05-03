@@ -108,17 +108,17 @@ def altMove(board, attemptedMove, dest):
 	distX = dest[0] - board.ourLoc[0]
 	distY = dest[1] - board.ourLoc[1]
 
-	possibility = ["up", "down", "right", "left"]
+	possibility = ["north", "south", "east", "west"]
 	priority = []
 
-	if distX < 0 and attemptedMove != "left":
-			priority.append("left")
-	elif distX > 0 and attemptedMove != "right":
-			priority.append("right")
-	elif distY < 0 and attemptedMove != "up":
-			priority.append("up")
-	elif distY > 0 and attemptedMove != "down":
-			priority.append("down")
+	if distX < 0 and attemptedMove != "west":
+			priority.append("west")
+	elif distX > 0 and attemptedMove != "east":
+			priority.append("east")
+	elif distY < 0 and attemptedMove != "north":
+			priority.append("north")
+	elif distY > 0 and attemptedMove != "south":
+			priority.append("south")
 
 	random.shuffle(possibility)
 	
@@ -150,27 +150,27 @@ def findMove(board, dest):
 	rand = bool(random.getrandbits(1))
 
 	if rand or (distY == 0):
-		if distX < 0 and lastMove != "right":
-			nextMove = "left"
-		elif distX > 0 and lastMove != "left": 
-			nextMove = "right"
-		elif distY < 0 and lastMove != "down":
-			nextMove = "up"
-		elif distY > 0 and lastMove != "up":
-			nextMove = "down"
+		if distX < 0 and lastMove != "east":
+			nextMove = "west"
+		elif distX > 0 and lastMove != "west": 
+			nextMove = "east"
+		elif distY < 0 and lastMove != "south":
+			nextMove = "north"
+		elif distY > 0 and lastMove != "north":
+			nextMove = "south"
 
 	if not rand or (distX == 0):
-		if distY < 0 and lastMove != "down":
-			nextMove = "up"
-		elif distY > 0 and lastMove != "up":
-			nextMove = "down"
-		elif distX < 0 and lastMove != "right":
-			nextMove = "left"
-		elif distX > 0 and lastMove != "left": 
-			nextMove = "right"
+		if distY < 0 and lastMove != "south":
+			nextMove = "north"
+		elif distY > 0 and lastMove != "north":
+			nextMove = "south"
+		elif distX < 0 and lastMove != "east":
+			nextMove = "west"
+		elif distX > 0 and lastMove != "west": 
+			nextMove = "east"
 	
 	elif distY == 0 and distX == 0:
-		nextMove = "up"
+		nextMove = "north"
 
 	return nextMove
 
@@ -197,13 +197,13 @@ def getLength(snake):
 	return length
 
 def getDest(board, move):
-	if move == "up":
+	if move == "north":
 		dest = [board.ourLoc[0], board.ourLoc[1] - 1]
-	elif move == "down":
+	elif move == "south":
 		dest = [board.ourLoc[0], board.ourLoc[1] + 1]
-	elif move == "right":
+	elif move == "east":
 		dest = [board.ourLoc[0] + 1, board.ourLoc[1]]
-	elif move == "left":
+	elif move == "west":
 		dest = [board.ourLoc[0] - 1, board.ourLoc[1]]
 	# should never get here
 	else:
@@ -216,12 +216,12 @@ def getlastMove(board, snake):
 	diffY = snake["coords"][0][1] - snake["coords"][1][1]
 
 	if diffX < 0:
-		lastMove = "left"
+		lastMove = "west"
 	elif diffX > 0:
-		lastMove = "right"
+		lastMove = "east"
 	elif diffY < 0:
-		lastMove = "up"
+		lastMove = "north"
 	elif diffY > 0:
-		lastMove = "down"
+		lastMove = "south"
 	else:
 		lastMove = "error"
