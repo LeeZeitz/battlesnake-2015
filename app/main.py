@@ -41,9 +41,9 @@ def start():
     width = data["width"]
 
     return {
-        "taunt": "ohno"
-        "name": "crazysnake5"
-        "color": "#689d22"
+        "taunt": "ohno",
+        "name": "crazysnake5",
+        "color": "#689d22",
         "head_url": head_url
     }
 
