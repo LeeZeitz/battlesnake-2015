@@ -36,10 +36,6 @@ def start():
         bottle.request.urlparts.netloc
     )
     global name
-    global height
-    height = data["height"]
-    global width
-    width = data["width"]
 
     return {
         "taunt": "ohno",
@@ -53,9 +49,12 @@ def start():
 def move():
 
     data = bottle.request.json
-    global height
-    global width
     global name
+
+    height = len(data['board'])
+
+    width = len(data['board'][0])
+
     board = BoardFrame(data, height, width, name)
     
     if board.foods:
