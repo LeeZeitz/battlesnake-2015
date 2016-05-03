@@ -42,6 +42,9 @@ def start():
 
     return {
         "taunt": "ohno"
+        "name": "crazysnake5"
+        "color": "#689d22"
+        "head_url": head_url
     }
 
 
@@ -71,7 +74,7 @@ def move():
     if move == "no_safe":
         print "ERROR!"
         return{
-            "move": "north",
+            "move": "up",
             "taunt": "ERROR!"
         }
 
