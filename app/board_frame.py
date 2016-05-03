@@ -9,7 +9,7 @@ class BoardFrame:
 
 		self.ourSnake = self.findOurSnake(self.snakes)
 		self.ourLoc = self.ourSnake["coords"][0]
-		self.grid = self.makeGrid()
+		#self.grid = self.makeGrid()
 
 	def findOurSnake(self, snakes):
 		for snake in snakes:
